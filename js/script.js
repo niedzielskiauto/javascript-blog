@@ -186,7 +186,6 @@ addClickListenersToTags();
 
 function generateAuthors() {
 
-  let allAuthors = {};
   /* [ Done ] Take Articles */
   const articles = document.querySelectorAll(optArticleSelector);
 
@@ -208,36 +207,12 @@ function generateAuthors() {
   /* [ Done ] Add generated code to html variable */
     html = html + authorLinkHTML;
 
- /* [ Done ] Checked Authortags */
-    if (!allAuthors.hasOwnProperty[authorTags]) {
-      allAuthors[authorTags] = 1;
-    } else {
-      allAuthors[authorTags]++;
-    }
     titleList.innerHTML = html;
   }
- /* [ Done ] Take authorlist */
-  const authorsList = document.querySelector(optAuthorsListSelector);
 
-  /* [ Done ] Take authorParams */
-  const authorParams = calculateAuthorParams(allAuthors);
-
-   /* [ Done ] Create variable */
-  let allAuthorsHTML = '';
-
-   /* [ Done ] Start loop */
-  for(let author in allAuthors){
-
-    const authorLinkHTML = '<li><a href="#author-' + author + '">' + author + ' (' + allAuthors[author] +') ' + '</a></li> ';
-
-    allAuthorsHTML += authorLinkHTML;
-  }
- /* [ Done ] Add generated code to html variable */
-  authorsList.innerHTML = allAuthorsHTML;
 }
 
 generateAuthors();
-
 
 
 function authorClickHandler(event) {
