@@ -65,7 +65,7 @@ const optTagsListSelector = '.tags.list';
     const linkHTML = `<li><a href="#${articleId}"><span>${articleTitle}</span></a></li>`;
 
     /* [Done] insert link into titleList */
-    html = html + linkHTML;
+    html += linkHTML;
   }
   
   titleList.innerHTML = html;
@@ -110,7 +110,7 @@ function generateTags() {
       const tagLinkHTML = `<li><a href="#tag-${tag}"><span> ${tag} </span></a></li> `;
      
       /* [ Done ] add generated code to html variable */
-      html = html + tagLinkHTML;
+      html += tagLinkHTML;
      
     /* [ Done ] END LOOP: for each tag */
     }
@@ -201,7 +201,7 @@ function generateAuthors() {
     const authorLinkHTML = `<li><a href="#author-${authorTags}"><span>${authorTags}</span></a></li>`;
       
   /* [ Done ] Add generated code to html variable */
-    html = html + authorLinkHTML;
+    html += authorLinkHTML;
 
     titleList.innerHTML = html;
   }
