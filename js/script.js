@@ -90,7 +90,7 @@ function calculateTagsParams (tags) {
   for(let tag in tags) {
     console.log(tag + ' is used ' + tags[tag] + ' times');
 
-    if(tags[tag] > params.max){
+    if(tags[tag] > params.max) {
       params.max = tags[tag];
     } if(tags[tag] < params.min) {
       params.min = tags[tag];
@@ -100,16 +100,18 @@ function calculateTagsParams (tags) {
 }
 
 function calculateTagClass(count, params) {
+
   const normalizedCount = count - params.min;
+
   const normalizedMax = params.max - params.min;
+
   const percentage = normalizedCount / normalizedMax;
+
   const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1 );
 
-return optCloudClassPrefix + classNumber;
+  return optCloudClassPrefix + classNumber;
+
 }
-
-
-
 
 function generateTags() {
   /* [NEW] create a new variable allTags with an empty array */
@@ -188,7 +190,7 @@ tagList.innerHTML = allTagsHTML;
 
 generateTags();
 
-function tagClickHandler(event){
+function tagClickHandler(event) {
 
   /* [ Done ] prevent default action for this event */
   event.preventDefault();
@@ -236,11 +238,12 @@ function addClickListenersToTags() {
   const allLinksToTags = document.querySelectorAll('a[href^="#tag-"]');
 
 /* [ Done ] Start Loop */
-  for(let link of allLinksToTags){
+  for(let link of allLinksToTags) {
 
     link.addEventListener('click', tagClickHandler);
 /* [ Done ] End lopp */
   }
+
 }
 
 
@@ -263,6 +266,7 @@ function calculateAuthorParams(authors) {
   }
   
   return authorParams;
+
 }
 
 function generateAuthors() {
@@ -292,8 +296,7 @@ function generateAuthors() {
     html += authorLinkHTML;
 
    /* New */
-
-   if(!allAuthors[authorTags]){
+   if(!allAuthors[authorTags]) {
 
     allAuthors[authorTags] = 1;
 
@@ -304,6 +307,7 @@ function generateAuthors() {
    }
 
     titleList.innerHTML = html;
+
   }
 
   const authorsList = document.querySelector(optAuthorsListSelector);
@@ -358,7 +362,6 @@ function authorClickHandler(event) {
   generateTitleLinks(`[data-author="${tag}"]`);
 
 }
-
 
 function addClickListenersToAuthors() {
 
