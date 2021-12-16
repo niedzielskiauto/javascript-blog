@@ -147,7 +147,7 @@ function generateTags() {
       /* [NEW] add tag to allTags object */
         allTags[tag] = 1;
       } else {
-        allTags[tag]++
+        allTags[tag]++;
         
     /* [ Done ] END LOOP: for each tag */
     }
@@ -163,20 +163,21 @@ function generateTags() {
 
     const tagsParams = calculateTagsParams(allTags);
 
-    console.log('tagsParams:', tagsParams)
+    console.log('tagsParams:', tagsParams);
 
     /* [NEW] create variable for all links HTML code */
     let allTagsHTML = '';
 
     /* [NEW] START LOOP: for each tag in allTags: */
-    for(let tag in allTags){
+    for(let tag in allTags) {
+
     /* [NEW] generate code of a link and add it to allTagsHTML */
    
   const tagLinkHTML = '<li><a class="' + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '">' + tag + '</a></li>';
 
   allTagsHTML += tagLinkHTML;
 
-  console.log('tagLinkHTML:', tagLinkHTML)
+  console.log('tagLinkHTML:', tagLinkHTML);
 }
 /* [NEW] END LOOP: for each tag in allTags: */
 
@@ -242,6 +243,7 @@ function addClickListenersToTags() {
   }
 }
 
+
 addClickListenersToTags();
 
 function calculateAuthorParams(authors) {
@@ -254,7 +256,7 @@ function calculateAuthorParams(authors) {
       authorParams.max = authors[author];
     }
     
-    if(authors[author] < authorParams.min){
+    if(authors[author] < authorParams.min) {
       authorParams.min = authors[author];
     }
     
@@ -304,19 +306,20 @@ function generateAuthors() {
     titleList.innerHTML = html;
   }
 
-const authorsList = document.querySelector(optAuthorsListSelector);
+  const authorsList = document.querySelector(optAuthorsListSelector);
+  const authorParams = calculateAuthorParams(allAuthors);
+  console.log(authorParams);
+  let allAuthorsHTML = '';
 
-let allAuthorsHTML = '';
+  for(let author in allAuthors) {
 
-for(let author in allAuthors) {
-  
-  const authorLinkHTML = `<li><a href="#author-${author}"> ${author} ( ${allAuthors[author]} )</a></li> `;
+    const authorLinkHTML = `<li><a href="#author-${author}"> ${author} ( ${allAuthors[author]} )</a></li> `;
 
-allAuthorsHTML += authorLinkHTML;
+  allAuthorsHTML += authorLinkHTML;
 
-}
+  }
 
-authorsList.innerHTML = allAuthorsHTML;
+  authorsList.innerHTML = allAuthorsHTML;
 
 }
 
