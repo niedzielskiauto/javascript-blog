@@ -118,3 +118,42 @@ body {
     margin: 0 10px 0 0;
   }
 }
+
+
+.tag-size-1 {
+  color: black;
+  font-size: 15px;
+}
+
+.tag-size-2 {
+  color: rgb(255, 0, 0);
+  font-size: 20px;
+}
+
+.tag-size-3 {
+  color: rgb(0, 47, 255);
+  font-size: 25px;
+}
+
+.tag-size-4 {
+  color: rgb(87, 82, 116);
+  font-size: 30px;
+}
+
+.tag-size-5 {
+  color: rgb(0, 148, 0);
+  font-size: 35px;
+}
+
+.tags li {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.tags li a {
+  text-decoration: none;
+  &:hover {
+    transition: .5s;
+    color: darkblue;
+  }
+}
