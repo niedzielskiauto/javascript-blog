@@ -36,11 +36,12 @@ const titleClickHandler = function (event) {
 };
 
 
-const optArticleSelector ='.post',
-  optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles',
-  optArticleTagsSelector = '.post-tags .list',
-  optArticleAuthorSelector = '.post-author';
+const optArticleSelector ='.post';
+const optTitleSelector = '.post-title';
+const optTitleListSelector = '.titles';
+const optArticleTagsSelector = '.post-tags .list';
+const optArticleAuthorSelector = '.post-author';
+const optTagsListSelector = '.tags.list';
 
   function generateTitleLinks(customSelector = '') {
   /* [Done] remove contents of titleList */
@@ -79,7 +80,10 @@ const optArticleSelector ='.post',
 generateTitleLinks();
 
 
-function generateTags(){
+function generateTags() {
+  /* [NEW] create a new variable allTags with an empty array */
+  let allTags = [];
+
   /* [Done] find all articles */
   const articles = document.querySelectorAll(optArticleSelector);
 
@@ -110,6 +114,7 @@ function generateTags(){
      
     /* [ Done ] END LOOP: for each tag */
     }
+
   tagsWrapper.innerHTML = html;
   }
  
@@ -144,7 +149,7 @@ function tagClickHandler(event){
   }
 
   /* [ Done ] find all tag links with "href" attribute equal to the "href" constant */
-  const selectedLinks = document.querySelectorAll('a[href="' + href + '"]');
+  const selectedLinks = document.querySelectorAll(`a[href="${href}]`);
 
   /* [ Done ] START LOOP: for each found tag link */
   for (let selectedLink of selectedLinks) {
@@ -156,7 +161,7 @@ function tagClickHandler(event){
   }
 
   /* [ Done ] execute function "generateTitleLinks" with article selector as argument */
-  generateTitleLinks('[data-tags~="' + tag + '"]');
+  generateTitleLinks(`[data-tags~="${tag}"]`);
  
 }
 
@@ -193,7 +198,7 @@ function generateAuthors() {
     const authorTags = article.getAttribute('data-author');
 
   /* [ Done ] Create Authorlink */
-    const authorLinkHTML = '<li><a href="#author-' + authorTags + '"><span>' + authorTags + '</span></a></li>';
+    const authorLinkHTML = `<li><a href="#author-${authorTags}"><span>${authorTags}</span></a></li>`;
       
   /* [ Done ] Add generated code to html variable */
     html = html + authorLinkHTML;
@@ -228,14 +233,14 @@ function authorClickHandler(event) {
   }
 
   /* [ Done ] Create constance authorLinkshref */
-  const authorLinksHref = document.querySelectorAll('a[href="' + href + '"]');
+  const authorLinksHref = document.querySelectorAll(`a[href="${href}"]`);
 
     /* [ Done ] Start loop*/
   for(let authorLinkHref of authorLinksHref) {
     authorLinkHref.classList.add('active');
   }
 
-  generateTitleLinks('[data-author="' + tag + '"]');
+  generateTitleLinks(`[data-author="${tag}"]`);
 
 }
 
