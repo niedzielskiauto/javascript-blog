@@ -43,7 +43,6 @@ const optArticleSelector ='.post',
   optArticleAuthorSelector = '.post-author';
 
   function generateTitleLinks(customSelector = '') {
-
   /* [Done] remove contents of titleList */
   const titleList = document.querySelector(optTitleListSelector);
   titleList.innerHTML='';
@@ -111,10 +110,6 @@ function generateTags(){
      
     /* [ Done ] END LOOP: for each tag */
     }
-
-    /* [ Done ] insert HTML of all the links into the tags wrapper */
-   
-  /* [ Done ] END LOOP: for every article: */
   tagsWrapper.innerHTML = html;
   }
  
@@ -178,10 +173,6 @@ function addClickListenersToTags() {
 }
 
 addClickListenersToTags();
-
-
-
-
 
 
 function generateAuthors() {
