@@ -1,5 +1,10 @@
 'use strict';
 
+const templates = {
+  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
+  tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
+  authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML)
+}
 
 const titleClickHandler = function (event) {
   event.preventDefault();
@@ -66,7 +71,8 @@ const optAuthorsListSelector = '.authors';
     const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
     /* [Done] create HTML of the link */
-    const linkHTML = `<li><a href="#${articleId}"><span>${articleTitle}</span></a></li>`;
+    const linkHTMLData = {id: articleId, title: articleTitle};
+    const linkHTML = templates.articleLink(linkHTMLData);
 
     /* [Done] insert link into titleList */
     html += linkHTML;
@@ -139,7 +145,11 @@ function generateTags() {
     for(let tag of articleTagsArray){
      
       /* [ Done ] Generate HTML of the link */
-      const tagLinkHTML = `<li><a href="#tag-${tag}"><span> ${tag} </span></a></li> `;
+
+      const tagLinkHTMLData = {id: tag, title: tag};
+      const tagLinkHTML = templates.tagLink(tagLinkHTMLData);
+
+      // const tagLinkHTML = `<li><a href="#tag-${tag}"><span> ${tag} </span></a></li> `;
      
       /* [ Done ] Add generated code to html variable */
       html += tagLinkHTML;
@@ -175,6 +185,7 @@ function generateTags() {
 
     /* [NEW] generate code of a link and add it to allTagsHTML */
    
+
   const tagLinkHTML = `<li><a class="${calculateTagClass(allTags[tag], tagsParams)}" href="#tag-${tag}">${tag}</a></li>`;
 
   allTagsHTML += tagLinkHTML;
@@ -290,7 +301,10 @@ function generateAuthors() {
     const authorTags = article.getAttribute('data-author');
 
   /* [ Done ] Create Authorlink */
-    const authorLinkHTML = `<li><a href="#author-${authorTags}"><span>${authorTags}</span></a></li>`;
+
+  const authorLinkHTMLData = {id: authorTags, title: authorTags};
+  const authorLinkHTML = templates.authorLink(authorLinkHTMLData);
+    // const authorLinkHTML = `<li><a href="#author-${authorTags}"><span>${authorTags}</span></a></li>`;
       
   /* [ Done ] Add generated code to html variable */
     html += authorLinkHTML;
